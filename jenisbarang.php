@@ -30,8 +30,12 @@ require 'cek.php';
                             <button type="button" class="btn btn-link  order-1 order-lg-0 me-4 me-lg-1" data-bs-toggle="dropdown" style="color:white;"><i class ="fas fa-bell"></i>
                             </button>
                             
-                        <div class="dropdown-menu" style="width: 400px; height: 200px; overflow-x: auto;">
-                            <div class="alert-content">
+                            <div class="dropdown-menu">
+                        <div class="alert-content">
+                        <div class="alert-content-header">
+                            <li><a style="margin-left:5%;">Notifikasi</a></li>
+                            <li><hr class="dropdown-divider"/></li>
+                        </div>
                                         <?php
                                         $ambildatastok = mysqli_query($conn, "SELECT * FROM stok WHERE stok < 1");
 

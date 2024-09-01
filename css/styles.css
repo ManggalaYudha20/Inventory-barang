@@ -95,6 +95,16 @@
   width : 100px;
 }
 
+.alert-content{
+  width: 400px; height: 200px; overflow-y: auto;
+}
+
+.alert-content-header{
+  position: sticky; 
+  top:0; 
+  background-color: white; 
+  z-index: 1;
+}
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
