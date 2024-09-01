@@ -44,7 +44,7 @@ require '../cek.php';
                                 ?>
 
                                 <div class="alert alert-danger alert-dismissible m-1">
-                                    <strong>Perhatian!</strong> Stok Barang <?=$barang;?> Telah Habis!
+                                    <strong>Perhatian!</strong> Stok <?=$barang;?> Telah Habis!
                                 </div>
 
                                 <?php

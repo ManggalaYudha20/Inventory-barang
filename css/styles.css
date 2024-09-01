@@ -97,6 +97,8 @@
 
 .alert-content{
   width: 400px; height: 200px; overflow-y: auto;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .alert-content-header{
