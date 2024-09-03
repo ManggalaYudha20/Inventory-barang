@@ -55,6 +55,14 @@ require '../cek.php';
 
                     </div>
                 </div>
+                <ul class="navbar-nav ms-auto me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white;"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
 
         </nav>
         <div id="layoutSidenav">
@@ -101,7 +109,7 @@ require '../cek.php';
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard </h1>
+                        <h1 class="mt-4">Informasi Barang </h1>
                         <ol class="breadcrumb mb-4">
                         </ol>
 
@@ -133,7 +141,7 @@ require '../cek.php';
 
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
+                                <div class="card bg-dark text-white mb-4">
                                     <div class="card-body"> <h3><i class="fas fa-warehouse"></i> STOK BARANG </h3>
                                     <h2 class="mb-0 number-font"><?=$count1?></h2>
                                     </div>
@@ -142,7 +150,7 @@ require '../cek.php';
                             </div>
 
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
+                                <div class="card bg-dark text-white mb-4">
                                     <div class="card-body"> <h3><i class="fas fa-user"></i> USER</h3>
                                     <h2 class="mb-0 number-font"><?=$count2?></h2>
                                     </div>
@@ -151,7 +159,7 @@ require '../cek.php';
                             </div>
 
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
+                                <div class="card bg-dark text-white mb-4">
                                     <div class="card-body"><h3><i class="fas fa-building"></i> DEPARTEMEN</h3>
                                     <h2 class="mb-0 number-font"><?=$count3?></h2>
                                     </div>

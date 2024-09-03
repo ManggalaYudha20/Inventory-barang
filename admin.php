@@ -54,6 +54,16 @@ require 'cek.php';
 
                 </div>
             </div>
+            <ul class="navbar-nav ms-auto me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white;"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="admin.php">Kelola Pengguna</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -197,23 +207,11 @@ require 'cek.php';
                                                             <input type="password" name="passwordbaru" value="<?=$pw;?>" class="form-control" placeholder="Password" >
                                                             <input type="hidden" name="id" value="<?=$iduser;?>">
                                                             <br>
-                                                            <select name="rolebaru" value="<?=$role;?>" class="form-control" placeholder="role" required>
-                                                                
-                                                            <?php
-                                                            $ambilsemuadatanya = mysqli_query($conn, "select * from login");
-                                                            while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)){
-                                                                $role = $fetcharray['role'];
-                                                                $iduser = $fetcharray['iduser'];
-
-                                                            ?>
-                                                            <option value="<?=$role;?>">
-                                                            <?=$role;?>
-                                                            </option>
-
-                                                            <?php
-                                                            };
-                                                            ?>
-                                                        </select>
+                                                            <select  name="rolebaru" placeholder="role" class="form-control" required>
+                                                            <option value="admin">admin</option>
+                                                            <option value="user">user</option>
+                                                            </select>
+                                                        
                                                         
                                                         </div>
                                                         
@@ -339,22 +337,8 @@ require 'cek.php';
         <input type="password" name="password" placeholder="Password" class="form-control" required>
         <br>
         <select  name="role" placeholder="role" class="form-control" required>
-        <?php
-             $ambilsemuadatanya = mysqli_query($conn, "select * from login");
-             while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)){
-                $role = $fetcharray['role'];
-                $iduser = $fetcharray['iduser'];
-
-            ?>
-            <option value="<?=$role;?>">
-            <?=$role;?>
-             </option>
-
-             <?php
-             }
-             ?>
-
-
+            <option value="admin">admin</option>
+            <option value="user">user</option>
             </select>
         <br>
         </div>

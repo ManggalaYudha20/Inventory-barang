@@ -54,6 +54,16 @@ require 'cek.php';
 
                     </div>
                 </div>
+                <ul class="navbar-nav ms-auto me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white;"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="admin.php">Kelola Pengguna</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
 
         </nav>
         <div id="layoutSidenav">
@@ -117,8 +127,21 @@ require 'cek.php';
             </div>
             <div id="layoutSidenav_content">
                 <main>
+                <h1 class="mt-4 container-fluid px-4">Dashboard </h1>
+
+                
+                <div class="jumbotron bg-light mt-3 ms-3 me-3">
+                                <h2 class="container display-6">Halo, ADMIN !</h2>      
+                            <p class="container lead">Selamat datang di <span style="font-weight: bold; font-size: 16pt;">WEB WAREHOUSE</span> PT.Delta Pasific Indotuna.</p>
+                            <a href="https://delpi.co.id/" target="_blank">
+                                <button class="btn btn-flat btn-primary mb-3" style="margin-left:25px;">
+                                    <i class="fas fa-globe"></i> Website PT.DELPI
+                                </button>
+                            </a>
+                            </div>
+                        
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard </h1>
+                        <h3 class="mt-4 ">Informasi Barang </h3>
                         <ol class="breadcrumb mb-4">
                         </ol>
 
@@ -150,7 +173,7 @@ require 'cek.php';
 
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
+                                <div class="card bg-dark text-white mb-4">
                                     <div class="card-body"> <h3><i class="fas fa-warehouse"></i> STOK BARANG </h3>
                                     <h2 class="mb-0 number-font"><?=$count1?></h2>
                                     </div>
@@ -159,7 +182,7 @@ require 'cek.php';
                             </div>
 
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
+                                <div class="card bg-dark text-white mb-4">
                                     <div class="card-body"> <h3><i class="fas fa-user"></i> USER</h3>
                                     <h2 class="mb-0 number-font"><?=$count2?></h2>
                                     </div>
@@ -168,7 +191,7 @@ require 'cek.php';
                             </div>
 
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
+                                <div class="card bg-dark text-white mb-4">
                                     <div class="card-body"><h3><i class="fas fa-building"></i> DEPARTEMEN</h3>
                                     <h2 class="mb-0 number-font"><?=$count3?></h2>
                                     </div>
@@ -185,7 +208,7 @@ require 'cek.php';
                                 </div>
                             </div>
 
-                            <div class="col-xl-3 col-md-6">
+                           <!-- <div class="col-xl-3 col-md-6">
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body"><h3><i class="fas fa-box"></i> GULA</h3>
                                     <h2 class="mb-0 number-font"><?=$stokGula?></h2>
@@ -197,11 +220,66 @@ require 'cek.php';
 
                                     </div>
                                 </div>
+                            </div> -->
+
+                            
+                     <div class="row bg-light ms-auto me-1"> 
+
+                     <form class="d-none d-md-inline-block form-inline ms-auto me-md-0 my-md-4" style="width:30%">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                            <button class="btn btn-dark" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
+
+                <div class="row"> 
+                            <div class="container mt-3 col-xl-3 col-md-6 me-5" id="btnNavbarSearch">
+                                <div class="card" style="width: 300px;">
+                                <img class="card-img-top" src="../images/e6183f6572d4ce7b72ceb1d1afd998d4.png" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                <h4 class="card-title"><i class="fas fa-box"></i> GULA</h4>
+                                <h2 class="mb-0 number-font"><?=$stokGula?></h2>
+                                <p class="card-text"></p>
+                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gula" href="#">Lihat Lebih Detail</a>
+                                </div>
+
+
+                                </div>
                             </div>
 
-                        </div>
-                        <div class="row">
-                        </div>   
+                            <div class="container mt-3 col-xl-3 col-md-6 mb-5">
+                                <div class="card" style="width: 300px;">
+                                <img class="card-img-top" src="../images/e6183f6572d4ce7b72ceb1d1afd998d4.png" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                <h4 class="card-title"><i class="fas fa-box"></i> van belt</h4>
+                                <h2 class="mb-0 number-font"><?=$stokGula?></h2>
+                                <p class="card-text"></p>
+                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gula" href="#">Lihat Lebih Detail</a>
+                                </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="container mt-3 col-xl-3 col-md-6 mb-5">
+                                <div class="card" style="width: 300px;">
+                                <img class="card-img-top" src="../images/e6183f6572d4ce7b72ceb1d1afd998d4.png" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                <h4 class="card-title"><i class="fas fa-box"></i> van belt 2</h4>
+                                <h2 class="mb-0 number-font"><?=$stokGula?></h2>
+                                <p class="card-text"></p>
+                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gula" href="#">Lihat Lebih Detail</a>
+                                </div>
+
+                                </div>
+                            </div>
+                    </div>
+
+
+                            <div class="row">
+                        </div>  
+                    </div>
+                        
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
