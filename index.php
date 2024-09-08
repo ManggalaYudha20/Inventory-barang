@@ -24,11 +24,13 @@ require 'cek.php';
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand bg-dark">
             <!-- Sidebar Toggle-->
-            <button class="btn btn-link  order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!" style="color:white;"><i class="fas fa-bars"></i></button>
+            <button class="btn btn-link  order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!" style="color:white;"><i class="fas fa-bars"></i>
+        </button>
 
             <div class="dropdown">
-                        <button type="button" class="btn btn-link  order-1 order-lg-0 me-4 me-lg-1" data-bs-toggle="dropdown" style="color:white;"><i class ="fas fa-bell"></i>
-                        </button>
+                        <a type="button" class="btn btn-link  order-1 order-lg-0 me-4 me-lg-1" data-bs-toggle="dropdown" style="color:white;"><i class ="fas fa-bell"></i>
+                        
+                        </a> 
                         
                     <div class="dropdown-menu">
                         <div class="alert-content">
@@ -54,6 +56,47 @@ require 'cek.php';
 
                     </div>
                 </div>
+
+            <div class="dropdown me-lg-6" style="margin-left : 90%;">
+
+                        <a type="button" class="btn btn-link  order-1 order-lg-0 me-4 me-lg-1" data-bs-toggle="dropdown" style="color:white;"><i class ="fas fa-message"></i>
+                        
+                        </a> 
+                        
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <div class="alert-content">
+                        <div class="card direct-chat direct-chat-primary" style="position: relative; left: 0px; top: 0px;">
+                        <div class="card-header ui-sortable-handle">
+                            <h3 class="card-title">Catatan</h3>
+                            
+                        </div>
+
+                                <div class="card-body">
+
+                                <div class="direct-chat-messages">
+
+
+
+                                <div class="card-footer">
+                                <form action="#" method="post">
+                                <div class="input-group">
+                                <input type="text" name="message" placeholder="Ketik Catatan ..." class="form-control">
+                                <span class="input-group-append">
+                                <button type="button" class="btn btn-primary">Send</button>
+                                </span>
+                                </div>
+                                </form>
+                                </div>
+
+                                </div>
+                        </div>
+
+                    </div>
+                </div>
+                </div>
+             </div>
+
+                
                 <ul class="navbar-nav ms-auto me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white;"><i class="fas fa-user fa-fw"></i></a>
@@ -127,12 +170,9 @@ require 'cek.php';
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                <h1 class="mt-4 container-fluid px-4">Dashboard </h1>
-
-                
-                <div class="jumbotron bg-light mt-3 ms-3 me-3">
-                                <h2 class="container display-6">Halo, ADMIN !</h2>      
-                            <p class="container lead">Selamat datang di <span style="font-weight: bold; font-size: 16pt;">WEB WAREHOUSE</span> PT.Delta Pasific Indotuna.</p>
+                <div class="jumbotron mt-3 ms-3 me-3">
+                                <h2 class=" mt-4 container-fluid px-4 display-6">Dashboard</h2>      
+                            <p class="container-fluid px-4 lead">Selamat datang di <span style="font-weight: bold; font-size: 16pt;">WEB WAREHOUSE</span> PT.Delta Pasific Indotuna.</p>
                             <a href="https://delpi.co.id/" target="_blank">
                                 <button class="btn btn-flat btn-primary mb-3" style="margin-left:25px;">
                                     <i class="fas fa-globe"></i> Website PT.DELPI
@@ -223,17 +263,17 @@ require 'cek.php';
                             </div> -->
 
                             
-                     <div class="row bg-light ms-auto me-1"> 
+                     <div class="row ms-auto me-1"> 
 
                      <form class="d-none d-md-inline-block form-inline ms-auto me-md-0 my-md-4" style="width:30%">
                         <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                            <button class="btn btn-dark" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                            <input class="form-control" id="searchInput" type="text" placeholder="Search for..."  />
                         </div>
                     </form>
 
-                <div class="row"> 
-                            <div class="container mt-3 col-xl-3 col-md-6 me-5" id="btnNavbarSearch">
+                <div class="row" id="cardContainer"> 
+
+                            <div class="container mt-3 col-xl-3 col-md-6 me-5" data-name="gula">
                                 <div class="card" style="width: 300px;">
                                 <img class="card-img-top" src="../images/e6183f6572d4ce7b72ceb1d1afd998d4.png" alt="Card image" style="width:100%">
                                 <div class="card-body">
@@ -247,7 +287,7 @@ require 'cek.php';
                                 </div>
                             </div>
 
-                            <div class="container mt-3 col-xl-3 col-md-6 mb-5">
+                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="van belt">
                                 <div class="card" style="width: 300px;">
                                 <img class="card-img-top" src="../images/e6183f6572d4ce7b72ceb1d1afd998d4.png" alt="Card image" style="width:100%">
                                 <div class="card-body">
@@ -261,7 +301,7 @@ require 'cek.php';
                                 </div>
                             </div>
 
-                            <div class="container mt-3 col-xl-3 col-md-6 mb-5">
+                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="van belt 2">
                                 <div class="card" style="width: 300px;">
                                 <img class="card-img-top" src="../images/e6183f6572d4ce7b72ceb1d1afd998d4.png" alt="Card image" style="width:100%">
                                 <div class="card-body">
@@ -273,6 +313,36 @@ require 'cek.php';
 
                                 </div>
                             </div>
+
+                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="garam">
+                                <div class="card" style="width: 300px;">
+                                <img class="card-img-top" src="../images/e6183f6572d4ce7b72ceb1d1afd998d4.png" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                <h4 class="card-title"><i class="fas fa-box"></i> garam</h4>
+                                <h2 class="mb-0 number-font"><?=$stokGula?></h2>
+                                <p class="card-text"></p>
+                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gula" href="#">Lihat Lebih Detail</a>
+                                </div>
+
+                                </div>
+                            </div>
+
+                            <script>
+                            document.getElementById('searchInput').addEventListener('keyup', function() {
+                                var input = this.value.toLowerCase();
+                                var cards = document.querySelectorAll('#cardContainer .container');
+
+                                cards.forEach(function(card) {
+                                    var cardName = card.getAttribute('data-name').toLowerCase();
+                                    if (cardName.includes(input)) {
+                                        card.style.display = 'block';
+                                    } else {
+                                        card.style.display = 'none';
+                                    }
+                                });
+                            });
+                            </script>
+
                     </div>
 
 

@@ -31,6 +31,7 @@ require 'cek.php';
                                             <th>QTY</th>
                                             <th>DEPARTEMEN</th>
                                             <th>PENERIMA </th>
+                                            <th>TANGGAL KELUAR </th>
                                     </tr>
                                     </thead>
                                    
@@ -53,6 +54,7 @@ require 'cek.php';
                                         $penerima = $data['penerima'];
                                         $qty = $data['qty'];
                                         $namadepartemen = $data['namadepartemen'];
+                                        $tanggal_keluar = $data['tanggal_keluar'];
                                         $idb = $data['idbarang'];
                                         $idk = $data['idkeluar'];
                                         
@@ -68,6 +70,7 @@ require 'cek.php';
                                             <td><?php echo $qty;?></td>
                                             <td><?php echo $namadepartemen;?></td>
                                             <td><?php echo $penerima;?></td>   
+                                            <td><?php echo $tanggal_keluar;?></td>   
                                             
                                         </tr>
 

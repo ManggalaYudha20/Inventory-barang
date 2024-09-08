@@ -139,14 +139,15 @@ if(in_array($ekstensi, $allowed_extension) === true){
     $barangnya = $_POST['barangnya'];
     $supplier = $_POST['supplier'];
     $qty = $_POST['qty'];
+    $tanggal_masuk = $_POST['tanggal_masuk'];
 
     $cekstoksekarang = mysqli_query($conn, "select * from stok where idbarang='$barangnya'");
     $ambildatanya = mysqli_fetch_array($cekstoksekarang);
     $stoksekarang = $ambildatanya['stok'];
     $tambahkanstoksekarangdenganquantity = $stoksekarang+$qty;
 
-    $addtomasuk = mysqli_query($conn, "insert into barangmasuk (idbarang,keterangan,qty) 
-    values ('$barangnya', '$supplier', '$qty')");
+    $addtomasuk = mysqli_query($conn, "insert into barangmasuk (idbarang,keterangan,qty,tanggal_masuk) 
+    values ('$barangnya', '$supplier', '$qty','$tanggal_masuk')");
 
 $updatestokmasuk = mysqli_query($conn, "update stok set stok='$tambahkanstoksekarangdenganquantity' where idbarang='$barangnya'");
     
@@ -169,6 +170,7 @@ if(isset($_POST['updatebarangmasuk'])){
     $namabarang = $_POST['namabarang'];
     $keterangan = $_POST['keterangan'];
     $qty = $_POST['qty'];
+    $tanggal_masuk = $_POST['tanggal_masuk'];
     
     $lihatstok = mysqli_query($conn, "select * from stok where idbarang='$idb'"); 
     $stoknya = mysqli_fetch_array($lihatstok);
@@ -182,7 +184,7 @@ if(isset($_POST['updatebarangmasuk'])){
         $selisih = $qty-$qtysekarang;
         $tambahkan = $stoksekarang + $selisih;
         $tambahinstoknya = mysqli_query($conn, "update stok set stok='$tambahkan' where idbarang='$idb'"); 
-        $updatenya = mysqli_query($conn, "update barangmasuk set qty='$qty', keterangan='$keterangan' where idmasuk='$idm'"); 
+        $updatenya = mysqli_query($conn, "update barangmasuk set qty='$qty', keterangan='$keterangan', tanggal_masuk='$tanggal_masuk' where idmasuk='$idm'"); 
     
 
     if($tambahinstoknya&&$updatenya){
@@ -196,7 +198,7 @@ if(isset($_POST['updatebarangmasuk'])){
             $selisih = $qtysekarang-$qty;
             $kurangin = $stoksekarang - $selisih;
             $kurangistoknya = mysqli_query($conn, "update stok set stok='$kurangin' where idbarang='$idb'"); 
-            $updatenya = mysqli_query($conn, "update barangmasuk set qty='$qty', keterangan='$keterangan' where idmasuk='$idm'"); 
+            $updatenya = mysqli_query($conn, "update barangmasuk set qty='$qty', keterangan='$keterangan', tanggal_masuk='$tanggal_masuk' where idmasuk='$idm'"); 
         }
     
         if($kurangistoknya&&$updatenya){
@@ -237,6 +239,7 @@ if(isset($_POST['addbarangkeluar'])){
     $penerima = $_POST['penerima'];
     $qty = $_POST['qty'];
     $namadepartemen = $_POST['namadepartemen'];
+    $tanggal_keluar = $_POST['tanggal_keluar'];
     
 
     $cekstoksekarang = mysqli_query($conn, "select * from stok where idbarang='$barangnya'");
@@ -251,8 +254,8 @@ if(isset($_POST['addbarangkeluar'])){
 
             $tambahkanstoksekarangdenganquantity = $stoksekarang-$qty;
 
-            $addtokeluar = mysqli_query($conn, "insert into barangkeluar (idbarang,penerima,qty,namadepartemen) 
-            values ('$barangnya', '$penerima', '$qty','$namadepartemen')");
+            $addtokeluar = mysqli_query($conn, "insert into barangkeluar (idbarang,penerima,qty,namadepartemen,tanggal_keluar) 
+            values ('$barangnya', '$penerima', '$qty','$namadepartemen','$tanggal_keluar')");
 
         $updatestokmasuk = mysqli_query($conn, "update stok set stok='$tambahkanstoksekarangdenganquantity' where idbarang='$barangnya'");
             
@@ -283,6 +286,8 @@ if(isset($_POST['updatebarangkeluar'])){
     $namabarang = $_POST['namabarang'];
     $penerima = $_POST['penerima'];
     $qty = $_POST['qty'];
+    $namadepartemen = $_POST['namadepartemen'];
+    $tanggal_keluar = $_POST['tanggal_keluar'];
     
     $lihatstok = mysqli_query($conn, "select * from stok where idbarang='$idb'"); 
     $stoknya = mysqli_fetch_array($lihatstok);
@@ -298,7 +303,7 @@ if(isset($_POST['updatebarangkeluar'])){
 
         if($selisih <= $stoksekarang){
             $kuranginstoknya = mysqli_query($conn, "update stok set stok='$kurangin' where idbarang='$idb'"); 
-            $updatenya = mysqli_query($conn, "update barangkeluar set qty='$qty', penerima='$penerima' where idkeluar='$idk'"); 
+            $updatenya = mysqli_query($conn, "update barangkeluar set qty='$qty', namadepartemen='$namadepartemen', penerima='$penerima', tanggal_keluar='$tanggal_keluar' where idkeluar='$idk'"); 
     
 
             if($kuranginstoknya&&$updatenya){
@@ -322,7 +327,7 @@ if(isset($_POST['updatebarangkeluar'])){
             $selisih = $qtysekarang-$qty;
             $tambahin = $stoksekarang + $selisih;
             $tambahinstoknya = mysqli_query($conn, "update stok set stok='$tambahin' where idbarang='$idb'"); 
-            $updatenya = mysqli_query($conn, "update barangkeluar set qty='$qty', penerima='$penerima' where idkeluar='$idk'"); 
+            $updatenya = mysqli_query($conn, "update barangkeluar set qty='$qty', namadepartemen='$namadepartemen', penerima='$penerima', tanggal_keluar='$tanggal_keluar' where idkeluar='$idk'"); 
         }
     
         if($tambahinstoknya&&$updatenya){

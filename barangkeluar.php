@@ -153,6 +153,7 @@ require 'cek.php';
                                             <th>QTY</th>
                                             <th>DEPARTEMEN</th>
                                             <th>PENERIMA </th>
+                                            <th>TANGGAL KELUAR </th>
                                             <th>AKSI </th>
                                             
                                         </tr>
@@ -177,6 +178,7 @@ require 'cek.php';
                                         $penerima = $data['penerima'];
                                         $qty = $data['qty'];
                                         $namadepartemen = $data['namadepartemen'];
+                                        $tanggal_keluar = $data['tanggal_keluar'];
                                         $idb = $data['idbarang'];
                                         $idk = $data['idkeluar'];
                                         
@@ -192,6 +194,7 @@ require 'cek.php';
                                             <td><?=$qty;?></td>
                                             <td><?=$namadepartemen;?></td>
                                             <td><?=$penerima;?></td>   
+                                            <td><?=$tanggal_keluar;?></td>
                                             <td>
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idk;?>">
                                              Edit
@@ -224,6 +227,27 @@ require 'cek.php';
                                                             <input type="text" name="penerima" value="<?=$penerima;?>" class="form-control">
                                                             <br>
                                                             <input type="number" name="qty" value="<?=$qty;?>" class="form-control"required>
+                                                            <br>
+                                                            <select  name="namadepartemen" value="<?=$namadepartemen;?>" placeholder="Departemen" class="form-control"required>
+                                                            <?php
+
+                                                                    $ambilsemuadatanya = mysqli_query($conn, "select * from departemen");
+                                                                    while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)){
+                                                                        $namadepartemen = $fetcharray['namadepartemen'];
+                                                                        $iddepartemen = $fetcharray['iddepartemen'];
+
+                                                                    ?>
+                                                                    
+                                                                    <option value="<?=$namadepartemen;?>">
+                                                                    <?=$namadepartemen;?>
+                                                                    </option>
+                                                                    <?php
+                                                                    };
+                                                                    ?>
+                                                            
+                                                            </select>
+                                                            <br>
+                                                            <input type="date" name="tanggal_keluar" value="<?=$tanggal_keluar;?>" class="form-control"required>
                                                             <br>
                                                             <input type="hidden" name="idb" value="<?=$idb;?>">
                                                             <input type="hidden" name="idk" value="<?=$idk;?>">
@@ -388,6 +412,8 @@ require 'cek.php';
                 ?>
         
          </select>
+        <br>
+        <input type="date" name="tanggal_keluar" placeholder="tanggal keluar" class="form-control"required>
         <br>
         <input type="text" name="penerima" placeholder="penerima" class="form-control" required>
         

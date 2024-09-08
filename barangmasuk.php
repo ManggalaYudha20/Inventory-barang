@@ -153,6 +153,7 @@ require 'cek.php';
                                             <th>TANGGAL INPUT</th>
                                             <th>QTY</th>
                                             <th>SUPPLIER </th>
+                                            <th>TANGGAL MASUK </th>
                                             <th>AKSI </th>
                                             
                                         </tr>
@@ -175,6 +176,7 @@ require 'cek.php';
                                         $tanggal = $data['tanggal'];
                                         $keterangan = $data['keterangan'];
                                         $qty = $data['qty'];
+                                        $tanggal_masuk = $data['tanggal_masuk'];
                                         $idb = $data['idbarang'];
                                         $idm = $data['idmasuk'];
                                         
@@ -187,6 +189,7 @@ require 'cek.php';
                                             <td><?=$tanggal;?></td>
                                             <td><?=$qty;?></td>
                                             <td><?=$keterangan;?></td> 
+                                            <td><?=$tanggal_masuk;?></td> 
                                             <td>
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idm;?>">
                                              Edit
@@ -220,6 +223,8 @@ require 'cek.php';
                                                             <input type="text" name="keterangan" value="<?=$keterangan;?>" class="form-control">
                                                             <br>
                                                             <input type="number" name="qty" value="<?=$qty;?>" class="form-control"required>
+                                                            <br>
+                                                            <input type="date" name="tanggal_masuk" value="<?=$tanggal_masuk;?>" class="form-control"required>
                                                             <br>
                                                             <input type="hidden" name="idb" value="<?=$idb;?>">
                                                             <input type="hidden" name="idm" value="<?=$idm;?>">
@@ -359,6 +364,8 @@ require 'cek.php';
         <input type="number" name="qty" placeholder="Quantity" class="form-control"required>
         <br>
         <input type="text" name="supplier" placeholder="Supplier" class="form-control" required>
+        <br>
+        <input type="date" name="tanggal_masuk" placeholder="tanggal masuk" class="form-control" required>
         <br>
         
         

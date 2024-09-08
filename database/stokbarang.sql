@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 22 Agu 2024 pada 20.03
+-- Waktu pembuatan: 08 Sep 2024 pada 00.49
 -- Versi server: 8.0.30
 -- Versi PHP: 8.3.9
 
@@ -32,18 +32,19 @@ CREATE TABLE `barangkeluar` (
   `idbarang` int NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `penerima` varchar(25) NOT NULL,
-  `qty` int NOT NULL
+  `qty` int NOT NULL,
+  `namadepartemen` varchar(30) NOT NULL,
+  `tanggal_keluar` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `barangkeluar`
 --
 
-INSERT INTO `barangkeluar` (`idkeluar`, `idbarang`, `tanggal`, `penerima`, `qty`) VALUES
-(4, 8, '2024-08-14 16:14:19', 'gamal', 10),
-(5, 8, '2024-08-14 16:49:30', 'hazel', 10),
-(10, 12, '2024-08-19 06:40:15', 'angga', 30),
-(12, 8, '2024-08-21 11:16:55', 'yes', 10);
+INSERT INTO `barangkeluar` (`idkeluar`, `idbarang`, `tanggal`, `penerima`, `qty`, `namadepartemen`, `tanggal_keluar`) VALUES
+(26, 19, '2024-08-30 05:36:49', 'angga', 100, 'gudang', ''),
+(27, 20, '2024-08-30 05:58:55', 'johan', 100, 'label', ''),
+(29, 22, '2024-09-03 11:25:46', 'gamal', 10, 'gudang', '');
 
 -- --------------------------------------------------------
 
@@ -56,18 +57,20 @@ CREATE TABLE `barangmasuk` (
   `idbarang` int NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `keterangan` varchar(25) NOT NULL,
-  `qty` int NOT NULL
+  `qty` int NOT NULL,
+  `tanggal_masuk` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `barangmasuk`
 --
 
-INSERT INTO `barangmasuk` (`idmasuk`, `idbarang`, `tanggal`, `keterangan`, `qty`) VALUES
-(5, 8, '2024-08-14 15:24:59', 'remon', 10),
-(6, 8, '2024-08-14 16:06:54', 'gamal', 15),
-(12, 8, '2024-08-17 01:23:14', 'GERAL', 55),
-(13, 12, '2024-08-19 06:39:00', 'angga', 20);
+INSERT INTO `barangmasuk` (`idmasuk`, `idbarang`, `tanggal`, `keterangan`, `qty`, `tanggal_masuk`) VALUES
+(17, 19, '2024-08-30 05:32:50', 'angga', 100, ''),
+(18, 20, '2024-08-30 05:58:25', 'johan', 100, ''),
+(19, 21, '2024-09-01 03:14:18', 'gala', 100, ''),
+(20, 22, '2024-09-02 03:28:15', 'toko baju', 100, ''),
+(22, 19, '2024-09-08 00:45:05', 'KARMEN', 10, '2024-09-10');
 
 -- --------------------------------------------------------
 
@@ -107,7 +110,7 @@ CREATE TABLE `jenis` (
 
 INSERT INTO `jenis` (`idjenis`, `namajenis`, `keterangan`) VALUES
 (2, 'umum', '-'),
-(3, 'sparepart', '-');
+(6, 'sparepart', '-');
 
 -- --------------------------------------------------------
 
@@ -118,16 +121,18 @@ INSERT INTO `jenis` (`idjenis`, `namajenis`, `keterangan`) VALUES
 CREATE TABLE `login` (
   `iduser` int NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(50) NOT NULL,
+  `role` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `login`
 --
 
-INSERT INTO `login` (`iduser`, `username`, `password`) VALUES
-(1, 'angga', '12345'),
-(2, 'admin', '12345');
+INSERT INTO `login` (`iduser`, `username`, `password`, `role`) VALUES
+(1, 'angga', '12345', 'user'),
+(2, 'admin', '12345', 'admin'),
+(6, 'user', '12345', 'user');
 
 -- --------------------------------------------------------
 
@@ -162,18 +167,21 @@ CREATE TABLE `stok` (
   `stok` int NOT NULL,
   `kodebarang` varchar(25) NOT NULL,
   `namasatuan` varchar(25) NOT NULL,
-  `namajenis` varchar(25) NOT NULL
+  `namajenis` varchar(25) NOT NULL,
+  `image` varchar(99) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `stok`
 --
 
-INSERT INTO `stok` (`idbarang`, `namabarang`, `deskripsi`, `stok`, `kodebarang`, `namasatuan`, `namajenis`) VALUES
-(8, 'damar', '', 30, '111', '3', '2'),
-(11, 'gula', '-', 40, '555', '4', '2'),
-(12, 'sabun', '-', 40, '444', '3', '2'),
-(14, 'Van Belt B-50', '', 10, '121', '3', '3');
+INSERT INTO `stok` (`idbarang`, `namabarang`, `deskripsi`, `stok`, `kodebarang`, `namasatuan`, `namajenis`, `image`) VALUES
+(19, 'gula', '-', 10, '111', 'pcs', 'umum', '9dec241d97464a8d8b2ef7758eab87df.png'),
+(20, 'Van Belt B-50', '-', 0, '333', 'pcs', 'sparepart', 'bc9d25dc5a51ad5e80d43b35205c0cfa.jpg'),
+(21, 'sabun cair', '-', 100, '999', 'pcs', 'umum', '3ea585d6f7cb06dd0c976f1ee4c57bc7.png'),
+(22, 'baju', '-', 90, '222', 'pcs', 'umum', 'e6183f6572d4ce7b72ceb1d1afd998d4.png'),
+(23, 'van belt 40', '-', 0, '777', 'pcs', 'sparepart', '9b281f56b63f047010dc61cace0ce6d3.jpg'),
+(24, 'van belt 20', '-', 0, '45454', 'pcs', 'sparepart', '4e3a6b1df390db8b1cc5cf7ce021ca06.jpg');
 
 --
 -- Indexes for dumped tables
@@ -229,43 +237,43 @@ ALTER TABLE `stok`
 -- AUTO_INCREMENT untuk tabel `barangkeluar`
 --
 ALTER TABLE `barangkeluar`
-  MODIFY `idkeluar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idkeluar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT untuk tabel `barangmasuk`
 --
 ALTER TABLE `barangmasuk`
-  MODIFY `idmasuk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idmasuk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `departemen`
 --
 ALTER TABLE `departemen`
-  MODIFY `iddepartemen` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `iddepartemen` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `jenis`
 --
 ALTER TABLE `jenis`
-  MODIFY `idjenis` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idjenis` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `login`
 --
 ALTER TABLE `login`
-  MODIFY `iduser` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `iduser` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `satuan`
 --
 ALTER TABLE `satuan`
-  MODIFY `idsatuan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idsatuan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `stok`
 --
 ALTER TABLE `stok`
-  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

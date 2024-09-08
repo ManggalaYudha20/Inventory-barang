@@ -30,6 +30,7 @@ require 'cek.php';
                                             <th>TANGGAL INPUT</th>
                                             <th>QTY</th>
                                             <th>SUPPLIER </th>
+                                            <th>TANGGAL MASUK </th>
                                             
                                         </tr>
                                     </thead>
@@ -51,6 +52,7 @@ require 'cek.php';
                                         $tanggal = $data['tanggal'];
                                         $keterangan = $data['keterangan'];
                                         $qty = $data['qty'];
+                                        $tanggal_masuk = $data['tanggal_masuk'];
                                         $idb = $data['idbarang'];
                                         $idm = $data['idmasuk'];
                                         
@@ -63,6 +65,7 @@ require 'cek.php';
                                             <td><?php echo $tanggal;?></td>
                                             <td><?php echo $qty;?></td>
                                             <td><?php echo $keterangan;?></td> 
+                                            <td><?php echo $tanggal_masuk;?></td> 
                                     
                                             
                                         </tr>
