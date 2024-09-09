@@ -54,6 +54,12 @@ require 'cek.php';
 
                     </div>
                 </div>
+
+                
+            <?php
+            include 'catatan.php';
+            ?>
+            
                 <ul class="navbar-nav ms-auto me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white;"><i class="fas fa-user fa-fw"></i></a>
@@ -358,6 +364,7 @@ require 'cek.php';
             <?php
             }
             ?>
+            
         </datalist>
         <br>
 

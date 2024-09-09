@@ -54,6 +54,11 @@ require '../cek.php';
 
                     </div>
                 </div>
+
+                <?php
+                include '../catatan.php';
+                ?>
+
                 <ul class="navbar-nav ms-auto me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white;"><i class="fas fa-user fa-fw"></i></a>
@@ -130,6 +135,7 @@ require '../cek.php';
                                             <th>TANGGAL INPUT</th>
                                             <th>QTY</th>
                                             <th>SUPPLIER </th>
+                                            <th>TANGGAL MASUK </th>
                                             
                                         </tr>
                                     </thead>
@@ -151,6 +157,7 @@ require '../cek.php';
                                         $tanggal = $data['tanggal'];
                                         $keterangan = $data['keterangan'];
                                         $qty = $data['qty'];
+                                        $tanggal_masuk = $data['tanggal_masuk'];
                                         $idb = $data['idbarang'];
                                         $idm = $data['idmasuk'];
                                         
@@ -163,6 +170,7 @@ require '../cek.php';
                                             <td><?=$tanggal;?></td>
                                             <td><?=$qty;?></td>
                                             <td><?=$keterangan;?></td>
+                                            <td><?=$tanggal_masuk;?></td> 
                                             
                                         </tr>
 

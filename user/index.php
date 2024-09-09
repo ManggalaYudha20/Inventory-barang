@@ -23,15 +23,17 @@ require '../cek.php';
         <script src="../js/bootstrap.bundle.min.js"></script>
     </head>
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand bg-dark">
+    <nav class="sb-topnav navbar navbar-expand bg-dark">
             <!-- Sidebar Toggle-->
-            <button class="btn btn-link  order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!" style="color:white;"><i class="fas fa-bars"></i></button>
+            <button class="btn btn-link  order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!" style="color:white;"><i class="fas fa-bars"></i>
+        </button>
 
             <div class="dropdown">
-                        <button type="button" class="btn btn-link  order-1 order-lg-0 me-4 me-lg-1" data-bs-toggle="dropdown" style="color:white;"><i class ="fas fa-bell"></i>
-                        </button>
+                        <a type="button" class="btn btn-link  order-1 order-lg-0 me-4 me-lg-1" data-bs-toggle="dropdown" style="color:white;"><i class ="fas fa-bell"></i>
                         
-                        <div class="dropdown-menu">
+                        </a> 
+                        
+                    <div class="dropdown-menu">
                         <div class="alert-content">
                         <div class="alert-content-header">
                             <li><a style="margin-left:5%;">Notifikasi</a></li>
@@ -55,6 +57,12 @@ require '../cek.php';
 
                     </div>
                 </div>
+
+            <?php
+            include '../catatan.php';
+            ?>
+
+                
                 <ul class="navbar-nav ms-auto me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white;"><i class="fas fa-user fa-fw"></i></a>
@@ -108,8 +116,18 @@ require '../cek.php';
             </div>
             <div id="layoutSidenav_content">
                 <main>
+                <div class="jumbotron mt-3 ms-3 me-3">
+                                <h2 class=" mt-4 container-fluid px-4 display-6">Dashboard</h2>      
+                            <p class="container-fluid px-4 lead">Selamat datang di <span style="font-weight: bold; font-size: 16pt;">WEB WAREHOUSE</span> PT.Delta Pasific Indotuna.</p>
+                            <a href="https://delpi.co.id/" target="_blank">
+                                <button class="btn btn-flat btn-primary mb-3" style="margin-left:25px;">
+                                    <i class="fas fa-globe"></i> Website PT.DELPI
+                                </button>
+                            </a>
+                            </div>
+                        
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Informasi Barang </h1>
+                        <h3 class="mt-4 ">Informasi Barang </h3>
                         <ol class="breadcrumb mb-4">
                         </ol>
 
@@ -131,9 +149,47 @@ require '../cek.php';
                         $get4 = mysqli_query($conn, "select * from stok where namajenis='sparepart'");
                         $count4 = mysqli_num_rows($get4);
 
-                        $getGulaStok = mysqli_query($conn, "SELECT stok FROM stok WHERE namabarang='gula'");
-                        $row = mysqli_fetch_array($getGulaStok);
-                        $stokGula = $row['stok'];
+                        $get5 = mysqli_query($conn, "SELECT * FROM stok ");
+                        $row = mysqli_fetch_array($get5);
+                        $get5 = $row['idbarang'];
+
+                        $get6 = mysqli_query($conn, "SELECT * FROM stok where namajenis='sparepart'");
+
+                        // Memeriksa apakah ada setidaknya dua baris
+                        if (mysqli_num_rows($get6) > 0) {
+                            // Melompat ke baris kedua (baris indeks dimulai dari 0)
+                            mysqli_data_seek($get6, 0); // 1 berarti baris kedua
+                            
+                            // Mengambil baris kedua
+                            $row = mysqli_fetch_assoc($get6);
+                            
+                            // Mengambil nilai kolom idbarang dan namabarang
+                            $kodebarang2 = $row['kodebarang'];
+                            $namabarang2 = $row['namabarang'];
+                            $stok2 = $row['stok'];
+                            $jenisbarang = $row['namajenis'];
+                            $image = $row['image'];
+
+                            while ($row = mysqli_fetch_assoc($get6)) {
+                            $kodebarang3 = $row['kodebarang'];
+                            $namabarang3 = $row['namabarang'];
+                            $stok3 = $row['stok'];
+                            $image3 = $row['image'];
+                            }
+
+                            mysqli_data_seek($get6, 1);
+
+                            $row = mysqli_fetch_assoc($get6);
+                            if ($row) {
+                                $kodebarang4 = $row['kodebarang'];
+                                $namabarang4 = $row['namabarang'];
+                                $stok4 = $row['stok'];
+                                $image4 = $row['image'];
+                            }
+
+
+
+                        } 
 
                         ?>
 
@@ -176,23 +232,85 @@ require '../cek.php';
                                 </div>
                             </div>
 
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body"><h3><i class="fas fa-box"></i> GULA</h3>
-                                    <h2 class="mb-0 number-font"><?=$stokGula?></h2>
-                                    </div>
-                                    
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" data-bs-toggle="modal" data-bs-target="#gula" href="#">Lihat Lebih Detail</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            
+                     <div class="row ms-auto me-1"> 
 
-                                    </div>
+                     <form class="d-none d-md-inline-block form-inline ms-auto me-md-0 my-md-4" style="width:30%">
+                        <div class="input-group">
+                            <input class="form-control" id="searchInput" type="text" placeholder="Search for..."  />
+                        </div>
+                    </form>
+
+                <div class="row" id="cardContainer"> 
+          
+
+                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="<?=$namabarang3?>">
+                                <div class="card" style="width: 300px;">
+                                <img class="card-img-top" src="../images/<?=$image3?>" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                <h4 class="card-title bg-light"><i class="fas fa-box"></i> <?=$namabarang3?></h4>
+                                <h4 class="mb-0 ">Stok Barang =<span class="h4"><?=$stok3?></span></h4>
+                                <h4 class="mb-0 ">Kode Barang =<span class="h4"><?=$kodebarang3?></span></h4>
+                                <h4 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h4>
+                                <p class="card-text"></p>
+                                <a class="btn btn-primary" href="barangmasuk.php"><i class="fa fa-plus"></i> Tambah</a>
+                                </div>                             
+                            </div>
+                            </div>
+
+                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="<?=$namabarang2?>">
+                                <div class="card" style="width: 300px;">
+                                <img class="card-img-top" src="../images/<?=$image?>" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                <h4 class="card-title bg-light"><i class="fas fa-box"></i> <?=$namabarang2?></h4>
+                                <h4 class="mb-0 ">Stok Barang =<span class="h4"><?=$stok2?></span></h4>
+                                <h4 class="mb-0 ">Kode Barang =<span class="h4"><?=$kodebarang2?></span></h4>
+                                <h4 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h4>
+                                <p class="card-text"></p>
+                                <a class="btn btn-primary" href="barangmasuk.php"><i class="fa fa-plus"></i> Tambah</a>
+                             </div>                            
+                            </div>
+                            </div>
+
+                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="<?=$namabarang4?>">
+                                <div class="card" style="width: 300px;">
+                                <img class="card-img-top" src="../images/<?=$image4?>" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                <h4 class="card-title bg-light"><i class="fas fa-box"></i> <?=$namabarang4?></h4>
+                                <h4 class="mb-0 ">Stok Barang =<span class="h4"><?=$stok4?></span></h4>
+                                <h4 class="mb-0 ">Kode Barang =<span class="h4"><?=$kodebarang4?></span></h4>
+                                <h4 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h4>
+                                <p class="card-text"></p>
+                                <a class="btn btn-primary" href="barangmasuk.php"><i class="fa fa-plus"></i> Tambah</a>
+                                </div>
+
                                 </div>
                             </div>
 
-                        </div>
-                        <div class="row">
-                        </div>   
+
+                            <script>
+                            document.getElementById('searchInput').addEventListener('keyup', function() {
+                                var input = this.value.toLowerCase();
+                                var cards = document.querySelectorAll('#cardContainer .container');
+
+                                cards.forEach(function(card) {
+                                    var cardName = card.getAttribute('data-name').toLowerCase();
+                                    if (cardName.includes(input)) {
+                                        card.style.display = 'block';
+                                    } else {
+                                        card.style.display = 'none';
+                                    }
+                                });
+                            });
+                            </script>
+
+                    </div>
+
+
+                            <div class="row">
+                        </div>  
+                    </div>
+                        
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -237,54 +355,5 @@ require '../cek.php';
             </div>
         </div>
     </div>
-
-
-    <!-- The Modal -->
-<div class="modal fade" id="gula">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">INFO</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <table class="table table-bordered">
-
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama Barang</th>
-                <th>Stok</th>
-                <th>Kode Barang</th>
-                <th>Satuan</th>
-                <th>Jenis</th>
-            </tr>
-        </thead>
-        
-        <tbody>
-            <tr>
-              <td>1</td>
-              <td>Gula</td>
-              <td><?=$stokGula;?></td>
-              <td>555</td>
-              <td>Kg</td>
-              <td>umum</td>
-            </tr>
-            
-          </tbody>
-
-        </table>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-
     </body>
 </html>

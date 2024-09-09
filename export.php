@@ -41,11 +41,9 @@ require 'cek.php';
                                     <?php 
                                     $i = 1;
                                     $ambilsemuadatastok = mysqli_query($conn, 
-                                        "SELECT s.idbarang, s.namabarang, s.deskripsi, s.stok, s.kodebarang, s.image , j.namajenis, sa.namasatuan
-                                        FROM stok s
-                                        JOIN jenis j ON s.namajenis = j.idjenis
-                                        JOIN satuan sa ON s.namasatuan = sa.idsatuan
+                                        "SELECT * FROM stok
                                     ");
+
 
                                     while($data=mysqli_fetch_array($ambilsemuadatastok)){
                                         $namabarang = $data['namabarang'];

@@ -57,44 +57,9 @@ require 'cek.php';
                     </div>
                 </div>
 
-            <div class="dropdown me-lg-6" style="margin-left : 90%;">
-
-                        <a type="button" class="btn btn-link  order-1 order-lg-0 me-4 me-lg-1" data-bs-toggle="dropdown" style="color:white;"><i class ="fas fa-message"></i>
-                        
-                        </a> 
-                        
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <div class="alert-content">
-                        <div class="card direct-chat direct-chat-primary" style="position: relative; left: 0px; top: 0px;">
-                        <div class="card-header ui-sortable-handle">
-                            <h3 class="card-title">Catatan</h3>
-                            
-                        </div>
-
-                                <div class="card-body">
-
-                                <div class="direct-chat-messages">
-
-
-
-                                <div class="card-footer">
-                                <form action="#" method="post">
-                                <div class="input-group">
-                                <input type="text" name="message" placeholder="Ketik Catatan ..." class="form-control">
-                                <span class="input-group-append">
-                                <button type="button" class="btn btn-primary">Send</button>
-                                </span>
-                                </div>
-                                </form>
-                                </div>
-
-                                </div>
-                        </div>
-
-                    </div>
-                </div>
-                </div>
-             </div>
+            <?php
+            include 'catatan.php';
+            ?>
 
                 
                 <ul class="navbar-nav ms-auto me-lg-4">
@@ -203,9 +168,47 @@ require 'cek.php';
                         $get4 = mysqli_query($conn, "select * from stok where namajenis='sparepart'");
                         $count4 = mysqli_num_rows($get4);
 
-                        $getGulaStok = mysqli_query($conn, "SELECT stok FROM stok WHERE namabarang='gula'");
-                        $row = mysqli_fetch_array($getGulaStok);
-                        $stokGula = $row['stok'];
+                        $get5 = mysqli_query($conn, "SELECT * FROM stok ");
+                        $row = mysqli_fetch_array($get5);
+                        $get5 = $row['idbarang'];
+
+                        $get6 = mysqli_query($conn, "SELECT * FROM stok where namajenis='sparepart'");
+
+                        // Memeriksa apakah ada setidaknya dua baris
+                        if (mysqli_num_rows($get6) > 0) {
+                            // Melompat ke baris kedua (baris indeks dimulai dari 0)
+                            mysqli_data_seek($get6, 0); // 1 berarti baris kedua
+                            
+                            // Mengambil baris kedua
+                            $row = mysqli_fetch_assoc($get6);
+                            
+                            // Mengambil nilai kolom idbarang dan namabarang
+                            $kodebarang2 = $row['kodebarang'];
+                            $namabarang2 = $row['namabarang'];
+                            $stok2 = $row['stok'];
+                            $jenisbarang = $row['namajenis'];
+                            $image = $row['image'];
+
+                            while ($row = mysqli_fetch_assoc($get6)) {
+                            $kodebarang3 = $row['kodebarang'];
+                            $namabarang3 = $row['namabarang'];
+                            $stok3 = $row['stok'];
+                            $image3 = $row['image'];
+                            }
+
+                            mysqli_data_seek($get6, 1);
+
+                            $row = mysqli_fetch_assoc($get6);
+                            if ($row) {
+                                $kodebarang4 = $row['kodebarang'];
+                                $namabarang4 = $row['namabarang'];
+                                $stok4 = $row['stok'];
+                                $image4 = $row['image'];
+                            }
+
+
+
+                        } 
 
                         ?>
 
@@ -272,60 +275,51 @@ require 'cek.php';
                     </form>
 
                 <div class="row" id="cardContainer"> 
+          
 
-                            <div class="container mt-3 col-xl-3 col-md-6 me-5" data-name="gula">
+                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="<?=$namabarang3?>">
                                 <div class="card" style="width: 300px;">
-                                <img class="card-img-top" src="../images/e6183f6572d4ce7b72ceb1d1afd998d4.png" alt="Card image" style="width:100%">
+                                <img class="card-img-top" src="../images/<?=$image3?>" alt="Card image" style="width:100%">
                                 <div class="card-body">
-                                <h4 class="card-title"><i class="fas fa-box"></i> GULA</h4>
-                                <h2 class="mb-0 number-font"><?=$stokGula?></h2>
+                                <h4 class="card-title bg-light"><i class="fas fa-box"></i> <?=$namabarang3?></h4>
+                                <h4 class="mb-0 ">Stok Barang =<span class="h4"><?=$stok3?></span></h4>
+                                <h4 class="mb-0 ">Kode Barang =<span class="h4"><?=$kodebarang3?></span></h4>
+                                <h4 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h4>
                                 <p class="card-text"></p>
-                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gula" href="#">Lihat Lebih Detail</a>
-                                </div>
+                                <a class="btn btn-primary" href="barangmasuk.php"><i class="fa fa-plus"></i> Tambah</a>
+                                </div>                             
+                            </div>
+                            </div>
 
+                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="<?=$namabarang2?>">
+                                <div class="card" style="width: 300px;">
+                                <img class="card-img-top" src="../images/<?=$image?>" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                <h4 class="card-title bg-light"><i class="fas fa-box"></i> <?=$namabarang2?></h4>
+                                <h4 class="mb-0 ">Stok Barang =<span class="h4"><?=$stok2?></span></h4>
+                                <h4 class="mb-0 ">Kode Barang =<span class="h4"><?=$kodebarang2?></span></h4>
+                                <h4 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h4>
+                                <p class="card-text"></p>
+                                <a class="btn btn-primary" href="barangmasuk.php"><i class="fa fa-plus"></i> Tambah</a>
+                             </div>                            
+                            </div>
+                            </div>
+
+                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="<?=$namabarang4?>">
+                                <div class="card" style="width: 300px;">
+                                <img class="card-img-top" src="../images/<?=$image4?>" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                <h4 class="card-title bg-light"><i class="fas fa-box"></i> <?=$namabarang4?></h4>
+                                <h4 class="mb-0 ">Stok Barang =<span class="h4"><?=$stok4?></span></h4>
+                                <h4 class="mb-0 ">Kode Barang =<span class="h4"><?=$kodebarang4?></span></h4>
+                                <h4 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h4>
+                                <p class="card-text"></p>
+                                <a class="btn btn-primary" href="barangmasuk.php"><i class="fa fa-plus"></i> Tambah</a>
+                                </div>
 
                                 </div>
                             </div>
 
-                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="van belt">
-                                <div class="card" style="width: 300px;">
-                                <img class="card-img-top" src="../images/e6183f6572d4ce7b72ceb1d1afd998d4.png" alt="Card image" style="width:100%">
-                                <div class="card-body">
-                                <h4 class="card-title"><i class="fas fa-box"></i> van belt</h4>
-                                <h2 class="mb-0 number-font"><?=$stokGula?></h2>
-                                <p class="card-text"></p>
-                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gula" href="#">Lihat Lebih Detail</a>
-                                </div>
-
-
-                                </div>
-                            </div>
-
-                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="van belt 2">
-                                <div class="card" style="width: 300px;">
-                                <img class="card-img-top" src="../images/e6183f6572d4ce7b72ceb1d1afd998d4.png" alt="Card image" style="width:100%">
-                                <div class="card-body">
-                                <h4 class="card-title"><i class="fas fa-box"></i> van belt 2</h4>
-                                <h2 class="mb-0 number-font"><?=$stokGula?></h2>
-                                <p class="card-text"></p>
-                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gula" href="#">Lihat Lebih Detail</a>
-                                </div>
-
-                                </div>
-                            </div>
-
-                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="garam">
-                                <div class="card" style="width: 300px;">
-                                <img class="card-img-top" src="../images/e6183f6572d4ce7b72ceb1d1afd998d4.png" alt="Card image" style="width:100%">
-                                <div class="card-body">
-                                <h4 class="card-title"><i class="fas fa-box"></i> garam</h4>
-                                <h2 class="mb-0 number-font"><?=$stokGula?></h2>
-                                <p class="card-text"></p>
-                                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gula" href="#">Lihat Lebih Detail</a>
-                                </div>
-
-                                </div>
-                            </div>
 
                             <script>
                             document.getElementById('searchInput').addEventListener('keyup', function() {
@@ -397,17 +391,15 @@ require 'cek.php';
 
 
     <!-- The Modal -->
-<div class="modal fade" id="gula">
+<!-- <div class="modal fade" id="gula">
   <div class="modal-dialog">
     <div class="modal-content">
-
-      <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">INFO</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
-      <!-- Modal body -->
+      
       <div class="modal-body">
         <table class="table table-bordered">
 
@@ -426,7 +418,7 @@ require 'cek.php';
             <tr>
               <td>1</td>
               <td>Gula</td>
-              <td><?=$stokGula;?></td>
+              <td><?=$get5;?></td>
               <td>555</td>
               <td>Kg</td>
               <td>umum</td>
@@ -435,7 +427,7 @@ require 'cek.php';
           </tbody>
 
         </table>
-        <!-- Modal footer -->
+        
         <div class="modal-footer">
         <a href="barangmasuk.php" class="btn btn-success"><i class="fas fa-plus"></i> Tambah</a>
         </div>
@@ -444,7 +436,7 @@ require 'cek.php';
 
     </div>
   </div>
-</div>
+</div> -->
 
 
 

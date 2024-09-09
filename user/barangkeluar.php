@@ -55,6 +55,11 @@ require '../cek.php';
 
                     </div>
                 </div>
+
+                <?php
+                include '../catatan.php';
+                ?>
+
                 <ul class="navbar-nav ms-auto me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white;"><i class="fas fa-user fa-fw"></i></a>
@@ -132,6 +137,7 @@ require '../cek.php';
                                             <th>QTY</th>
                                             <th>DEPARTEMEN</th>
                                             <th>PENERIMA </th>
+                                            <th>TANGGAL KELUAR </th>
                                             
                                         </tr>
                                     </thead>
@@ -155,6 +161,7 @@ require '../cek.php';
                                         $penerima = $data['penerima'];
                                         $qty = $data['qty'];
                                         $namadepartemen = $data['namadepartemen'];
+                                        $tanggal_keluar = $data['tanggal_keluar'];
                                         $idb = $data['idbarang'];
                                         $idk = $data['idkeluar'];
                                         
@@ -169,7 +176,8 @@ require '../cek.php';
                                             <td><?=$tanggal;?></td>
                                             <td><?=$qty;?></td>
                                             <td><?=$namadepartemen;?></td>
-                                            <td><?=$penerima;?></td>   
+                                            <td><?=$penerima;?></td>
+                                            <td><?=$tanggal_keluar;?></td>   
                                             
                                             
                                         </tr>
