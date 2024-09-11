@@ -562,6 +562,21 @@ if(isset($_POST['addpengguna'])){
 
  };
 
+ //tambah catatan
+ if(isset($_POST['tambahcatatan'])){
+    $isi_catatan = $_POST['isi_catatan'];
+
+    $addtocatatan = mysqli_query($conn, "insert into catatan (isi_catatan) 
+    values ('$isi_catatan')");
+
+    if($addtocatatan){
+        $return_url = isset($_GET['return_url']) ? $_GET['return_url'] : 'catatan.php';
+        
+        header('location: ', $return_url);
+    } else {
+        header('location: ', $return_url);
+    }
+ };
 
 
 ?>

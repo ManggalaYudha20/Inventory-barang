@@ -253,7 +253,7 @@ require '../cek.php';
                                 <h4 class="mb-0 ">Kode Barang =<span class="h4"><?=$kodebarang3?></span></h4>
                                 <h4 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h4>
                                 <p class="card-text"></p>
-                                <a class="btn btn-primary" href="barangmasuk.php"><i class="fa fa-plus"></i> Tambah</a>
+                                
                                 </div>                             
                             </div>
                             </div>
@@ -267,7 +267,7 @@ require '../cek.php';
                                 <h4 class="mb-0 ">Kode Barang =<span class="h4"><?=$kodebarang2?></span></h4>
                                 <h4 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h4>
                                 <p class="card-text"></p>
-                                <a class="btn btn-primary" href="barangmasuk.php"><i class="fa fa-plus"></i> Tambah</a>
+                                
                              </div>                            
                             </div>
                             </div>
@@ -281,7 +281,7 @@ require '../cek.php';
                                 <h4 class="mb-0 ">Kode Barang =<span class="h4"><?=$kodebarang4?></span></h4>
                                 <h4 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h4>
                                 <p class="card-text"></p>
-                                <a class="btn btn-primary" href="barangmasuk.php"><i class="fa fa-plus"></i> Tambah</a>
+                                
                                 </div>
 
                                 </div>

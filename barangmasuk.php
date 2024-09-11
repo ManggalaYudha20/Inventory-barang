@@ -150,6 +150,7 @@ require 'cek.php';
                             </button>
                             <a href="exportbm.php" class="btn btn-success"><i class="fas fa-print"></i> Export Data</a>
                             </div>
+                            
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                 <thead>
