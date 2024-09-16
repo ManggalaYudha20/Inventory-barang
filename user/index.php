@@ -244,49 +244,76 @@ require '../cek.php';
                 <div class="row" id="cardContainer"> 
           
 
-                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="<?=$namabarang3?>">
-                                <div class="card" style="width: 300px;">
+                <div class="container mt-3 col-xl-2 col-md-5 mb-5" data-name="<?=$namabarang3?>">
+                                <div class="card" style="width: 240px;">
                                 <img class="card-img-top" src="../images/<?=$image3?>" alt="Card image" style="width:100%">
                                 <div class="card-body">
                                 <h4 class="card-title bg-light"><i class="fas fa-box"></i> <?=$namabarang3?></h4>
-                                <h4 class="mb-0 ">Stok Barang =<span class="h4"><?=$stok3?></span></h4>
-                                <h4 class="mb-0 ">Kode Barang =<span class="h4"><?=$kodebarang3?></span></h4>
-                                <h4 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h4>
+                                <h5 class="mb-0 ">Stok Barang =<span class="h5"><?=$stok3?></span></h5>
+                                <h5 class="mb-0 ">Kode Barang =<span class="h5"><?=$kodebarang3?></span></h5>
+                                <h5 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h5>
                                 <p class="card-text"></p>
                                 
                                 </div>                             
                             </div>
                             </div>
 
-                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="<?=$namabarang2?>">
-                                <div class="card" style="width: 300px;">
+                            <div class="container mt-3 col-xl-2 col-md-6 mb-5" data-name="<?=$namabarang2?>">
+                                <div class="card" style="width: 240px;">
                                 <img class="card-img-top" src="../images/<?=$image?>" alt="Card image" style="width:100%">
                                 <div class="card-body">
                                 <h4 class="card-title bg-light"><i class="fas fa-box"></i> <?=$namabarang2?></h4>
-                                <h4 class="mb-0 ">Stok Barang =<span class="h4"><?=$stok2?></span></h4>
-                                <h4 class="mb-0 ">Kode Barang =<span class="h4"><?=$kodebarang2?></span></h4>
-                                <h4 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h4>
+                                <h5 class="mb-0 ">Stok Barang =<span class="h5"><?=$stok2?></span></h5>
+                                <h5 class="mb-0 ">Kode Barang =<span class="h5"><?=$kodebarang2?></span></h5>
+                                <h5 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h5>
                                 <p class="card-text"></p>
                                 
                              </div>                            
                             </div>
                             </div>
 
-                            <div class="container mt-3 col-xl-3 col-md-6 mb-5" data-name="<?=$namabarang4?>">
-                                <div class="card" style="width: 300px;">
+                            <div class="container mt-3 col-xl-2 col-md-6 mb-5" data-name="<?=$namabarang4?>">
+                                <div class="card" style="width: 240px;">
                                 <img class="card-img-top" src="../images/<?=$image4?>" alt="Card image" style="width:100%">
                                 <div class="card-body">
                                 <h4 class="card-title bg-light"><i class="fas fa-box"></i> <?=$namabarang4?></h4>
-                                <h4 class="mb-0 ">Stok Barang =<span class="h4"><?=$stok4?></span></h4>
-                                <h4 class="mb-0 ">Kode Barang =<span class="h4"><?=$kodebarang4?></span></h4>
-                                <h4 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h4>
+                                <h5 class="mb-0 ">Stok Barang =<span class="h5"><?=$stok4?></span></h5>
+                                <h5 class="mb-0 ">Kode Barang =<span class="h5"><?=$kodebarang4?></span></h5>
+                                <h5 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h5>
                                 <p class="card-text"></p>
                                 
                                 </div>
 
                                 </div>
                             </div>
+                            
+                            <div class="container mt-3 col-xl-2 col-md-6 mb-5" data-name="<?=$namabarang4?>">
+                                <div class="card" style="width: 240px;">
+                                <img class="card-img-top" src="../images/<?=$image4?>" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                <h4 class="card-title bg-light"><i class="fas fa-box"></i> <?=$namabarang4?></h4>
+                                <h5 class="mb-0 ">Stok Barang =<span class="h5"><?=$stok4?></span></h5>
+                                <h5 class="mb-0 ">Kode Barang =<span class="h5"><?=$kodebarang4?></span></h5>
+                                <h5 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h5>
+                                <p class="card-text"></p>
+                                </div>
 
+                                </div>
+                            </div>
+
+                            <div class="container mt-3 col-xl-2 col-md-6 mb-5" data-name="<?=$namabarang4?>">
+                                <div class="card" style="width: 240px;">
+                                <img class="card-img-top" src="../images/<?=$image4?>" alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                <h4 class="card-title bg-light"><i class="fas fa-box"></i> <?=$namabarang4?></h4>
+                                <h5 class="mb-0 ">Stok Barang =<span class="h5"><?=$stok4?></span></h5>
+                                <h5 class="mb-0 ">Kode Barang =<span class="h5"><?=$kodebarang4?></span></h5>
+                                <h5 class="mb-0 ">Jenis Barang =<span class="btn btn-dark"><?=$jenisbarang?></span></h5>
+                                <p class="card-text"></p>
+                                </div>
+
+                                </div>
+                            </div>
 
                             <script>
                             document.getElementById('searchInput').addEventListener('keyup', function() {
