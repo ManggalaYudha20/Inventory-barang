@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 08 Sep 2024 pada 00.49
--- Versi server: 8.0.30
--- Versi PHP: 8.3.9
+-- Generation Time: Sep 23, 2024 at 10:59 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barangkeluar`
+-- Table structure for table `barangkeluar`
 --
 
 CREATE TABLE `barangkeluar` (
@@ -38,18 +38,18 @@ CREATE TABLE `barangkeluar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `barangkeluar`
+-- Dumping data for table `barangkeluar`
 --
 
 INSERT INTO `barangkeluar` (`idkeluar`, `idbarang`, `tanggal`, `penerima`, `qty`, `namadepartemen`, `tanggal_keluar`) VALUES
-(26, 19, '2024-08-30 05:36:49', 'angga', 100, 'gudang', ''),
-(27, 20, '2024-08-30 05:58:55', 'johan', 100, 'label', ''),
-(29, 22, '2024-09-03 11:25:46', 'gamal', 10, 'gudang', '');
+(26, 19, '2024-08-30 05:36:49', 'angga', 100, 'gudang', '2024-09-01'),
+(27, 20, '2024-08-30 05:58:55', 'johan', 100, 'gudang', '2024-08-30'),
+(29, 22, '2024-09-03 11:25:46', 'gamal', 10, 'gudang', '2024-09-10');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `barangmasuk`
+-- Table structure for table `barangmasuk`
 --
 
 CREATE TABLE `barangmasuk` (
@@ -62,20 +62,41 @@ CREATE TABLE `barangmasuk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `barangmasuk`
+-- Dumping data for table `barangmasuk`
 --
 
 INSERT INTO `barangmasuk` (`idmasuk`, `idbarang`, `tanggal`, `keterangan`, `qty`, `tanggal_masuk`) VALUES
-(17, 19, '2024-08-30 05:32:50', 'angga', 100, ''),
-(18, 20, '2024-08-30 05:58:25', 'johan', 100, ''),
-(19, 21, '2024-09-01 03:14:18', 'gala', 100, ''),
-(20, 22, '2024-09-02 03:28:15', 'toko baju', 100, ''),
-(22, 19, '2024-09-08 00:45:05', 'KARMEN', 10, '2024-09-10');
+(17, 19, '2024-08-30 05:32:50', 'angga', 100, '2024-09-09'),
+(18, 20, '2024-08-30 05:58:25', 'johan', 100, '2024-08-28'),
+(19, 21, '2024-09-01 03:14:18', 'gala', 100, '2024-09-06'),
+(20, 22, '2024-09-02 03:28:15', 'toko baju', 100, '2024-08-26'),
+(22, 19, '2024-09-08 00:45:05', 'KARMEN', 10, '2024-09-11'),
+(23, 23, '2024-09-09 13:41:46', 'angga', 100, '2024-09-10');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `departemen`
+-- Table structure for table `catatan`
+--
+
+CREATE TABLE `catatan` (
+  `idcatatan` int NOT NULL,
+  `tanggal_catatan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `isi_catatan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `catatan`
+--
+
+INSERT INTO `catatan` (`idcatatan`, `tanggal_catatan`, `isi_catatan`) VALUES
+(1, '2024-09-11 11:43:27', 'haloo saya angga'),
+(46, '2024-09-14 05:25:45', 'isi stok gula');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departemen`
 --
 
 CREATE TABLE `departemen` (
@@ -85,7 +106,7 @@ CREATE TABLE `departemen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `departemen`
+-- Dumping data for table `departemen`
 --
 
 INSERT INTO `departemen` (`iddepartemen`, `namadepartemen`, `keterangan`) VALUES
@@ -95,7 +116,7 @@ INSERT INTO `departemen` (`iddepartemen`, `namadepartemen`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis`
+-- Table structure for table `jenis`
 --
 
 CREATE TABLE `jenis` (
@@ -105,7 +126,7 @@ CREATE TABLE `jenis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `jenis`
+-- Dumping data for table `jenis`
 --
 
 INSERT INTO `jenis` (`idjenis`, `namajenis`, `keterangan`) VALUES
@@ -115,7 +136,7 @@ INSERT INTO `jenis` (`idjenis`, `namajenis`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `login`
+-- Table structure for table `login`
 --
 
 CREATE TABLE `login` (
@@ -126,7 +147,7 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `login`
+-- Dumping data for table `login`
 --
 
 INSERT INTO `login` (`iduser`, `username`, `password`, `role`) VALUES
@@ -137,7 +158,7 @@ INSERT INTO `login` (`iduser`, `username`, `password`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `satuan`
+-- Table structure for table `satuan`
 --
 
 CREATE TABLE `satuan` (
@@ -147,7 +168,7 @@ CREATE TABLE `satuan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `satuan`
+-- Dumping data for table `satuan`
 --
 
 INSERT INTO `satuan` (`idsatuan`, `namasatuan`, `keterangan`) VALUES
@@ -157,7 +178,7 @@ INSERT INTO `satuan` (`idsatuan`, `namasatuan`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `stok`
+-- Table structure for table `stok`
 --
 
 CREATE TABLE `stok` (
@@ -172,7 +193,7 @@ CREATE TABLE `stok` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data untuk tabel `stok`
+-- Dumping data for table `stok`
 --
 
 INSERT INTO `stok` (`idbarang`, `namabarang`, `deskripsi`, `stok`, `kodebarang`, `namasatuan`, `namajenis`, `image`) VALUES
@@ -180,7 +201,7 @@ INSERT INTO `stok` (`idbarang`, `namabarang`, `deskripsi`, `stok`, `kodebarang`,
 (20, 'Van Belt B-50', '-', 0, '333', 'pcs', 'sparepart', 'bc9d25dc5a51ad5e80d43b35205c0cfa.jpg'),
 (21, 'sabun cair', '-', 100, '999', 'pcs', 'umum', '3ea585d6f7cb06dd0c976f1ee4c57bc7.png'),
 (22, 'baju', '-', 90, '222', 'pcs', 'umum', 'e6183f6572d4ce7b72ceb1d1afd998d4.png'),
-(23, 'van belt 40', '-', 0, '777', 'pcs', 'sparepart', '9b281f56b63f047010dc61cace0ce6d3.jpg'),
+(23, 'van belt 40', '-', 100, '777', 'pcs', 'sparepart', '9b281f56b63f047010dc61cace0ce6d3.jpg'),
 (24, 'van belt 20', '-', 0, '45454', 'pcs', 'sparepart', '4e3a6b1df390db8b1cc5cf7ce021ca06.jpg');
 
 --
@@ -188,89 +209,101 @@ INSERT INTO `stok` (`idbarang`, `namabarang`, `deskripsi`, `stok`, `kodebarang`,
 --
 
 --
--- Indeks untuk tabel `barangkeluar`
+-- Indexes for table `barangkeluar`
 --
 ALTER TABLE `barangkeluar`
   ADD PRIMARY KEY (`idkeluar`);
 
 --
--- Indeks untuk tabel `barangmasuk`
+-- Indexes for table `barangmasuk`
 --
 ALTER TABLE `barangmasuk`
   ADD PRIMARY KEY (`idmasuk`);
 
 --
--- Indeks untuk tabel `departemen`
+-- Indexes for table `catatan`
+--
+ALTER TABLE `catatan`
+  ADD PRIMARY KEY (`idcatatan`);
+
+--
+-- Indexes for table `departemen`
 --
 ALTER TABLE `departemen`
   ADD PRIMARY KEY (`iddepartemen`);
 
 --
--- Indeks untuk tabel `jenis`
+-- Indexes for table `jenis`
 --
 ALTER TABLE `jenis`
   ADD PRIMARY KEY (`idjenis`);
 
 --
--- Indeks untuk tabel `login`
+-- Indexes for table `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`iduser`);
 
 --
--- Indeks untuk tabel `satuan`
+-- Indexes for table `satuan`
 --
 ALTER TABLE `satuan`
   ADD PRIMARY KEY (`idsatuan`);
 
 --
--- Indeks untuk tabel `stok`
+-- Indexes for table `stok`
 --
 ALTER TABLE `stok`
   ADD PRIMARY KEY (`idbarang`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `barangkeluar`
+-- AUTO_INCREMENT for table `barangkeluar`
 --
 ALTER TABLE `barangkeluar`
   MODIFY `idkeluar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT untuk tabel `barangmasuk`
+-- AUTO_INCREMENT for table `barangmasuk`
 --
 ALTER TABLE `barangmasuk`
-  MODIFY `idmasuk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idmasuk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT untuk tabel `departemen`
+-- AUTO_INCREMENT for table `catatan`
+--
+ALTER TABLE `catatan`
+  MODIFY `idcatatan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT for table `departemen`
 --
 ALTER TABLE `departemen`
   MODIFY `iddepartemen` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `jenis`
+-- AUTO_INCREMENT for table `jenis`
 --
 ALTER TABLE `jenis`
   MODIFY `idjenis` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `login`
+-- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `iduser` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `satuan`
+-- AUTO_INCREMENT for table `satuan`
 --
 ALTER TABLE `satuan`
   MODIFY `idsatuan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `stok`
+-- AUTO_INCREMENT for table `stok`
 --
 ALTER TABLE `stok`
   MODIFY `idbarang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
